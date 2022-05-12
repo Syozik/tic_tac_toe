@@ -35,6 +35,7 @@ def player_move(i, j):
         return True
 
 def check_win(i,j):
+    
     FIELD[i][j] = 'o'
     res = check_status()
     FIELD[i][j] = ' '
@@ -53,23 +54,23 @@ def computer_move():
             if FIELD[row][column] == ' ':
                 if check_win(row,column):
                     FIELD[row][column] = 'o'
-                    return (row,column)
+                    return (column,row)
                 s.append((row,column))
     
         for idx in s:
             if check_lose(*idx):
                 FIELD[idx[0]][idx[1]] = 'o'
-                return (idx)
+                return (idx[::-1])
 
     i, j = choice(s)
     FIELD[i][j] = 'o'
-    return (i,j)
+    return (j,i)
  
 def see_the_field():
     print('  1 2 3')
     for i in range(3):
         print(i+1,end = '')
         for j in range(3):
-            s = FIELD[j][i]
+            s = FIELD[i][j]
             print('|',end=s)
         print('|')
