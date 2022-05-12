@@ -150,7 +150,7 @@ def main():
         nonlocal k
         pos = (int((i-x)//width),int((y-j)//height))
         if 0<=pos[0]<=2 and 0<=pos[1]<=2 and not tt.check_status():
-            if tt.player_move(*pos):
+            if tt.player_move(*pos[::-1]):
                 tt.see_the_field()
                 k += 1
                 TurtleDraw().draw_crisscross((x+pos[0]*width + 7.5,y-pos[1]*height - 10),(x+(pos[0]+1)*width - 7.5,y - pos[1]*height - 10),100,angle,'red')
